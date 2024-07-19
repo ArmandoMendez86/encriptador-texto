@@ -1,0 +1,262 @@
+/* FUENTES */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+/* GENERALES */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 16px;
+  background-color: #f3f5fc;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
+::-webkit-input-placeholder {
+  color: #0a3871;
+}
+
+/* HEADER */
+
+.header {
+  height: 10%;
+}
+.encriptar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.encriptar #limpiarTexto {
+  position: absolute;
+  display: none;
+  padding: 0.1rem 0.35rem;
+  border-radius: 50%;
+  align-self: flex-end;
+  border: 1px solid #0a3871;
+  cursor: pointer;
+  color: #0a3871;
+}
+.encriptar #limpiarTexto:hover small {
+  display: block;
+}
+.encriptar #limpiarTexto:hover :last-child {
+  color: red;
+}
+.encriptar #limpiarTexto small {
+  text-wrap: nowrap;
+  font-size: 0.7rem;
+  position: absolute;
+  top: -1.3rem;
+  left: -2rem;
+  display: none;
+  font-weight: 400;
+}
+.encriptar__textarea {
+  font-size: 1.5rem;
+  border: none;
+  font-weight: 400;
+  color: #0a3871;
+  outline: none;
+  background-color: transparent;
+  padding-top: 3rem;
+  height: 70%;
+}
+
+.animacion__escritura {
+  transition: 0.8s;
+  background-image: url(../assets/img/ojo.gif);
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: right 45px;
+}
+
+.encriptar__small {
+  font-size: 12px;
+  line-height: 18px;
+  color: #495057;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+.acciones_button,
+#copiarTexto {
+  width: 100%;
+  border-radius: 24px;
+  padding: 24px;
+  color: #0a3871;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 1rem;
+  border: 1px solid #0a3871;
+}
+.acciones_button:hover,
+#copiarTexto:hover {
+  background-color: #0a3871;
+  color: #fff;
+  transition: 0.5s;
+  letter-spacing: 0.8px;
+}
+
+#copiarTexto {
+  margin-top: 1rem;
+}
+.mensaje {
+  background-color: #fff;
+  border-radius: 32px;
+  text-align: center;
+  padding: 30px;
+  width: 95%;
+  align-self: center;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mensaje .muneco {
+  display: none;
+}
+.mensaje h3 {
+  font-size: 1.5rem;
+  line-height: 28.8px;
+  color: #343a40;
+}
+.mensaje p {
+  font-size: 0.8rem;
+  line-height: 24px;
+  color: #868e96;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 24px;
+}
+.footer small span {
+  color: #0a3871;
+  font-weight: 500;
+}
+#nombre {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 2px solid black; /* Cursor de escritura */
+  animation: typing 6s steps(30, end) infinite,
+    blink-caret 0.85s step-end infinite;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 16rem;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -130%) scale(0.5);
+  }
+  to {
+    opacity: 0.9;
+    transform: translate(-50%, -130%) scale(1);
+  }
+}
+
+.alerta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0a3871;
+  color: #fff;
+  display: none;
+  width: 10rem;
+  height: 10rem;
+  line-height: 10rem;
+  border-radius: 50%;
+  text-align: center;
+  opacity: 0;
+}
+
+.alerta.visible {
+  display: block;
+  animation: slideInFromTop 1s forwards;
+}
+
+/* MEDIAQUERIES */
+
+/* Tabletas */
+@media only screen and (min-width: 768px) {
+  .acciones {
+    flex-direction: row;
+  }
+  #copiarTexto {
+    width: 50%;
+  }
+  #limpiarTexto {
+    font-size: 1.5rem;
+  }
+  .animacion__escritura {
+    background-size: 40px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  /* .acciones{
+    justify-content: center;
+  }
+ .acciones_button{
+  max-width: 35%;
+ } */
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1440px) {
+  body {
+    padding-left: 240px;
+    width: 1100px;
+  }
+
+  .acciones_button {
+    max-width: 360px;
+  }
+
+  .mensaje {
+    max-width: 450px;
+    height: 96%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f8f8f8;
+    position: fixed;
+    right: 0;
+    top: 0;
+    overflow-y: scroll;
+  }
+
+}
