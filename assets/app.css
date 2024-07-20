@@ -59,6 +59,7 @@ body {
   font-weight: 400;
 }
 .encriptar__textarea {
+  resize: none;
   font-size: 1.5rem;
   border: none;
   font-weight: 400;
