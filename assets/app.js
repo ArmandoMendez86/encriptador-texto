@@ -1,3 +1,7 @@
+/* ################ VARIABLES ################ */
+
+let existeImagen = false;
+
 /* ################ FUNCIONES ################ */
 
 function encriptarTexto(mensaje) {
@@ -53,16 +57,6 @@ function encriptar_desencriptar(codificar) {
   });
 }
 
-function restaurarValores() {
-  document.querySelector("#texto").value = "";
-  document.querySelector("#limpiarTexto").style.display = "none";
-  document.querySelector(".encriptar").classList.remove("animacion__escritura");
-  document.querySelector(
-    ".mensaje"
-  ).innerHTML = ` <h3>Ningún mensaje fue encontrado</h3>
-  <p>Ingresa el texto que desees encriptar o desencriptar.</p>`;
-}
-
 function mostrarAlerta(mensaje) {
   const alerta = document.querySelector(".alerta");
   alerta.innerHTML = `${mensaje}`;
@@ -73,54 +67,78 @@ function mostrarAlerta(mensaje) {
   }, 1500);
 }
 
-// Define la media query
-const mediaQuery = window.matchMedia("(max-width: 1440px)");
+function quitarAnimacion() {
+  document.querySelector("#limpiarTexto").style.display = "none";
+  document.querySelector(".encriptar").classList.remove("animacion__escritura");
+}
+function ponerAnimacion() {
+  document.querySelector("#limpiarTexto").style.display = "block";
+  document.querySelector(".encriptar").classList.add("animacion__escritura");
+}
 
-// Define la función de callback
-function handleMediaQueryChange(event) {
-  if (event.matches) {
-    // La ventana tiene un ancho máximo de 992px
-    document.querySelector(".muneco").style.display = "none";
+function resetarCampos() {
+  document.querySelector("#texto").value = "";
+  document.querySelector("#limpiarTexto").style.display = "none";
+  document.querySelector(".encriptar").classList.remove("animacion__escritura");
+}
+
+function restaurarValores() {
+  if (existeImagen === true) {
+    resetarCampos();
+    document.querySelector(".mensaje").innerHTML = ` 
+    <img src="assets/img/muneco.svg"/>
+    <h3>Ningún mensaje fue encontrado</h3>
+    <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+    `;
   } else {
-    // La ventana tiene un ancho mayor a 992px
-    document.querySelector(".muneco").style.display = "block";
+    resetarCampos();
+    document.querySelector(".mensaje").innerHTML = ` 
+    <img src="assets/img/muneco.svg" class="d-none"/>
+    <h3>Ningún mensaje fue encontrado</h3>
+    <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+    `;
+  }
+  existeImagen = false;
+}
+
+function verificarImagen() {
+  let imagen = document.querySelector(".d-none");
+  if (imagen.classList.contains("d-none")) {
+    existeImagen = false;
+  } else {
+    existeImagen = true;
   }
 }
 
-// Registra el listener para el evento de cambio
-mediaQuery.addEventListener("change", handleMediaQueryChange);
-
-
 /* ################ EVENTOS ################ */
 
-//Encriptar
+//ENCRIPTAR
 document
   .querySelector(".acciones_button--encriptar")
   .addEventListener("click", function () {
+    verificarImagen();
     encriptar_desencriptar(encriptarTexto);
   });
 
-//Desencriptar
+//DESENCRIPTAR
 document
   .querySelector(".acciones_button--desencriptar")
   .addEventListener("click", function () {
+    verificarImagen();
     encriptar_desencriptar(desencriptarTexto);
   });
 
-//Escribir en caja texto
+//ESCRIBIR TEXTO
 document.querySelector("#texto").addEventListener("input", function () {
   if (this.value == "") {
-    document.querySelector("#limpiarTexto").style.display = "none";
-    document
-      .querySelector(".encriptar")
-      .classList.remove("animacion__escritura");
+    quitarAnimacion();
+    restaurarValores();
   } else {
-    document.querySelector("#limpiarTexto").style.display = "block";
-    document.querySelector(".encriptar").classList.add("animacion__escritura");
+    ponerAnimacion();
   }
 });
 
-//Limpiar caja texto
+//LIMPIAR TEXTO
 document.querySelector("#limpiarTexto").addEventListener("click", function () {
   restaurarValores();
 });

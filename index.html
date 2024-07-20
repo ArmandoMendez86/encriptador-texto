@@ -1,52 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reto encriptador</title>
-    <link rel="stylesheet" href="assets/app.css">
-</head>
+    <link rel="stylesheet" href="assets/app.css" />
+  </head>
 
-<body>
-
-
-    <header class="header">
-        <img src="assets/img/alura.svg" alt="">
-    </header>
-    <section class="encriptar">
-        <span id="limpiarTexto">
+  <body>
+    <div class="wraper">
+      <div class="section1">
+        <header class="header">
+          <img src="assets/img/alura.svg" alt="" />
+        </header>
+        <section class="encriptar">
+          <span id="limpiarTexto">
             <small>Limpiar texto</small>
             <span>X</span>
-        </span>
-        <textarea class="encriptar__textarea" placeholder="Ingrese el texto aqui" id="texto"></textarea>
-        <small class="encriptar__small">
-            <img src="assets/img/exclamation.svg">
+          </span>
+          <textarea
+            class="encriptar__textarea"
+            placeholder="Ingrese el texto aqui"
+            id="texto"
+          ></textarea>
+          <small class="encriptar__small">
+            <img src="assets/img/exclamation.svg" />
             Solo letras minúsculas y sin acentos
-        </small>
-    </section>
-    <section class="acciones">
-        <button type="button" class="acciones_button acciones_button--encriptar">Encriptar</button>
-        <button type="button" class="acciones_button acciones_button--desencriptar">Desencriptar</button>
-    </section>
+          </small>
+        </section>
+        <section class="acciones">
+          <button
+            type="button"
+            class="acciones_button acciones_button--encriptar"
+          >
+            Encriptar
+          </button>
+          <button
+            type="button"
+            class="acciones_button acciones_button--desencriptar"
+          >
+            Desencriptar
+          </button>
+        </section>
+      </div>
 
-
-
-    <section class="mensaje">
-        <img src="assets/img/muneco.svg" alt="" class="muneco">
-        <h3>Ningún mensaje fue encontrado</h3>
-        <p>Ingresa el texto que desees encriptar o desencriptar.</p>
-    </section>
-
+      <div class="section2">
+        <section class="mensaje">
+          <img src="assets/img/muneco.svg" class="d-none" />
+          <h3>Ningún mensaje fue encontrado</h3>
+          <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+        </section>
+      </div>
+    </div>
 
     <footer class="footer">
-        <small><span id="nombre">Diseñado por: Armando Méndez Ríos</span></small>
+      <small><span id="nombre">Diseñado por: Armando Méndez Ríos</span></small>
     </footer>
 
     <div class="alerta"></div>
 
-
     <script src="assets/app.js"></script>
-</body>
-
+  </body>
 </html>
