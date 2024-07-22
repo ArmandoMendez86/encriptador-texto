@@ -1,9 +1,14 @@
-/* ################ VARIABLES ################ */
+/*=============================================
+	                  VARIABLES
+	=============================================*/
 
 let existeImagen = false;
 
-/* ################ FUNCIONES ################ */
+/*=============================================
+	                  FUNCIONES
+	=============================================*/
 
+/*=============ENCRIPTAR=============*/
 function encriptarTexto(mensaje) {
   let sanitizarMensaje = mensaje.trim();
   let textoEncriptado = sanitizarMensaje
@@ -15,6 +20,7 @@ function encriptarTexto(mensaje) {
   return textoEncriptado;
 }
 
+/*=============DESENCRIPTAR=============*/
 function desencriptarTexto(mensaje) {
   let sanitizarMensaje = mensaje.trim();
   let textoDesencriptado = sanitizarMensaje
@@ -26,6 +32,7 @@ function desencriptarTexto(mensaje) {
   return textoDesencriptado;
 }
 
+/*=============SANITIZAR MENSAJE=============*/
 function eliminarAcentosYmayusculas(texto) {
   return texto
     .normalize("NFD")
@@ -33,6 +40,7 @@ function eliminarAcentosYmayusculas(texto) {
     .toLowerCase();
 }
 
+/*=============COPIAR TEXTO=============*/
 function copiarTexto() {
   const inputText = document.getElementById("mensajeCopiar").innerText;
   navigator.clipboard
@@ -45,6 +53,7 @@ function copiarTexto() {
     });
 }
 
+/*=============ENCRIPTAR O DESENCRIPTAR=============*/
 function encriptar_desencriptar(codificar) {
   let mensaje = document.getElementById("texto").value;
   if (mensaje == "") return;
@@ -58,6 +67,7 @@ function encriptar_desencriptar(codificar) {
   });
 }
 
+/*=============ALERTA DE COPIADO=============*/
 function mostrarAlerta(mensaje) {
   const alerta = document.querySelector(".alerta");
   alerta.innerHTML = `${mensaje}`;
@@ -72,66 +82,51 @@ function quitarAnimacion() {
   document.querySelector("#limpiarTexto").style.display = "none";
   document.querySelector(".encriptar").classList.remove("animacion__escritura");
 }
+
+/*=============AGREGAR ANIMACIÓN=============*/
 function ponerAnimacion() {
   document.querySelector("#limpiarTexto").style.display = "block";
   document.querySelector(".encriptar").classList.add("animacion__escritura");
 }
 
+/*=============RESETEAR=============*/
 function resetarCampos() {
   document.querySelector("#texto").value = "";
   document.querySelector("#limpiarTexto").style.display = "none";
   document.querySelector(".encriptar").classList.remove("animacion__escritura");
 }
 
+/*=============RESTAURAR=============*/
 function restaurarValores() {
-  if (existeImagen === true) {
-    resetarCampos();
-    document.querySelector(".mensaje").innerHTML = ` 
-    <img src="assets/img/muneco.svg"/>
-    <h3>Ningún mensaje fue encontrado</h3>
-    <p>Ingresa el texto que desees encriptar o desencriptar.</p>
-    `;
-  } else {
-    resetarCampos();
-    document.querySelector(".mensaje").innerHTML = ` 
+  resetarCampos();
+  document.querySelector(".mensaje").innerHTML = ` 
     <img src="assets/img/muneco.svg" class="d-none"/>
     <h3>Ningún mensaje fue encontrado</h3>
     <p>Ingresa el texto que desees encriptar o desencriptar.</p>
     `;
-  }
-  existeImagen = false;
 }
 
-function verificarImagen() {
-  let imagen = document.querySelector(".d-none");
-  if (imagen.classList.contains("d-none")) {
-    existeImagen = false;
-  } else {
-    existeImagen = true;
-  }
-}
+/*=============================================
+	                  EVENTOS
+	=============================================*/
 
-/* ################ EVENTOS ################ */
-
-//ENCRIPTAR
+/*=============ENCRIPTAR=============*/
 document
   .querySelector(".acciones_button--encriptar")
   .addEventListener("click", function () {
-    verificarImagen();
     encriptar_desencriptar(encriptarTexto);
     document.querySelector(".mensaje").style.justifyContent = "space-between";
   });
 
-//DESENCRIPTAR
+/*=============DESENCRIPTAR=============*/
 document
   .querySelector(".acciones_button--desencriptar")
   .addEventListener("click", function () {
-    verificarImagen();
     encriptar_desencriptar(desencriptarTexto);
     document.querySelector(".mensaje").style.justifyContent = "space-between";
   });
 
-//ESCRIBIR TEXTO
+/*=============ESCRIBIR TEXTO=============*/
 document.querySelector("#texto").addEventListener("input", function () {
   if (this.value == "") {
     quitarAnimacion();
@@ -142,7 +137,7 @@ document.querySelector("#texto").addEventListener("input", function () {
   }
 });
 
-//LIMPIAR TEXTO
+/*=============LIMPIAR TEXTO=============*/
 document.querySelector("#limpiarTexto").addEventListener("click", function () {
   restaurarValores();
   document.querySelector(".mensaje").style.justifyContent = "center";
