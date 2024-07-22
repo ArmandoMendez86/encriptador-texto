@@ -48,8 +48,9 @@ function copiarTexto() {
 function encriptar_desencriptar(codificar) {
   let mensaje = document.getElementById("texto").value;
   if (mensaje == "") return;
+  let limpiarMensaje = eliminarAcentosYmayusculas(mensaje);
   document.querySelector(".mensaje").innerHTML = `
-  <p id="mensajeCopiar">${codificar(mensaje)}</p>
+  <p id="mensajeCopiar">${codificar(limpiarMensaje)}</p>
   <button type="button" id="copiarTexto">Copiar</button>
  `;
   document.querySelector("#copiarTexto").addEventListener("click", function () {
@@ -118,6 +119,7 @@ document
   .addEventListener("click", function () {
     verificarImagen();
     encriptar_desencriptar(encriptarTexto);
+    document.querySelector(".mensaje").style.justifyContent = "space-between";
   });
 
 //DESENCRIPTAR
@@ -126,6 +128,7 @@ document
   .addEventListener("click", function () {
     verificarImagen();
     encriptar_desencriptar(desencriptarTexto);
+    document.querySelector(".mensaje").style.justifyContent = "space-between";
   });
 
 //ESCRIBIR TEXTO
@@ -133,6 +136,7 @@ document.querySelector("#texto").addEventListener("input", function () {
   if (this.value == "") {
     quitarAnimacion();
     restaurarValores();
+    document.querySelector(".mensaje").style.justifyContent = "center";
   } else {
     ponerAnimacion();
   }
@@ -141,4 +145,5 @@ document.querySelector("#texto").addEventListener("input", function () {
 //LIMPIAR TEXTO
 document.querySelector("#limpiarTexto").addEventListener("click", function () {
   restaurarValores();
+  document.querySelector(".mensaje").style.justifyContent = "center";
 });

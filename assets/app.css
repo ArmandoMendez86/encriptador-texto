@@ -16,9 +16,19 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background: linear-gradient(rgba(8, 8, 8, 0.842), rgb(8, 8, 8)),
+    url(../assets/img/fondo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 ::-webkit-input-placeholder {
-  color: #0a3871;
+  color: #ffffff5e;
+}
+
+.logo_alura {
+  animation: rotacion 5s linear infinite;
+  transform-style: preserve-3d;
 }
 
 .wraper {
@@ -56,17 +66,15 @@ body {
   position: absolute;
   display: none;
   padding: 0.1rem 0.35rem;
-  border-radius: 50%;
   align-self: flex-end;
-  border: 1px solid #0a3871;
   cursor: pointer;
-  color: #0a3871;
+  color: #ffffffc0;
 }
 .encriptar #limpiarTexto:hover small {
   display: block;
 }
 .encriptar #limpiarTexto:hover :last-child {
-  color: red;
+  color: rgb(153, 12, 12);
 }
 .encriptar #limpiarTexto small {
   text-wrap: nowrap;
@@ -81,12 +89,12 @@ body {
   font-size: 1.5rem;
   border: none;
   font-weight: 400;
-  color: #0a3871;
+  color: #ffffffc0;
   outline: none;
   background-color: transparent;
   padding-top: 3rem;
   height: 70%;
-  resize:none;
+  resize: none;
 }
 
 .animacion__escritura {
@@ -117,25 +125,35 @@ body {
   width: 100%;
   border-radius: 24px;
   padding: 24px;
-  color: #0a3871;
+  color: #495057;
   background-color: transparent;
   font-weight: 400;
   font-size: 1rem;
-  border: 1px solid #0a3871;
+  border: 1px solid #ffffff3b;
 }
+
+#copiarTexto {
+  border: 1px solid #343a40;
+}
+
 .acciones_button:hover,
 #copiarTexto:hover {
-  background-color: #0a3871;
+  background-color: #0a387167;
   color: #fff;
   transition: 0.5s;
   letter-spacing: 0.8px;
+}
+
+#copiarTexto:hover {
+  background-color: #343a40;
+  color: #fff;
 }
 
 #copiarTexto {
   margin-top: 1rem;
 }
 .mensaje {
-  background-color: #fff;
+  background-color: #ffffffec;
   border-radius: 32px;
   text-align: center;
   padding: 30px;
@@ -144,7 +162,7 @@ body {
   margin-top: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .mensaje .d-none {
@@ -166,14 +184,14 @@ body {
   margin-top: 24px;
 }
 .footer small span {
-  color: #0a3871;
+  color: #ffffff5e;
   font-weight: 500;
 }
 #nombre {
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-  border-right: 2px solid black; /* Cursor de escritura */
+  border-right: 2px solid black;
   animation: typing 6s steps(30, end) infinite,
     blink-caret 0.85s step-end infinite;
 }
@@ -206,13 +224,22 @@ body {
   }
 }
 
+@keyframes rotacion {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
 .alerta {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #0a3871;
-  color: #fff;
+  background-color: #ffffffec;
+  color: #000;
   display: none;
   width: 10rem;
   height: 10rem;
@@ -270,7 +297,7 @@ body {
     width: 50%;
     height: 100%;
   }
-  .section2{
+  .section2 {
     width: 30%;
   }
   .mensaje {
@@ -283,7 +310,7 @@ body {
   .acciones_button {
     max-width: 400px;
   }
-  #copiarTexto{
+  #copiarTexto {
     width: 100%;
   }
 }

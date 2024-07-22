@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reto encriptador</title>
     <link rel="stylesheet" href="assets/app.css" />
+    <link rel="shortcut icon" href="assets/img/logo_encrip.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
     <div class="wraper">
       <div class="section1">
         <header class="header">
-          <img src="assets/img/alura.svg" alt="" />
+          <img src="assets/img/alura.svg" class="logo_alura" />
         </header>
         <section class="encriptar">
           <span id="limpiarTexto">
             <small>Limpiar texto</small>
-            <span>X</span>
+            <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>
           </span>
           <textarea
             class="encriptar__textarea"
@@ -24,7 +26,7 @@
             id="texto"
           ></textarea>
           <small class="encriptar__small">
-            <img src="assets/img/exclamation.svg" />
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
             Solo letras minúsculas y sin acentos
           </small>
         </section>
