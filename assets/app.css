@@ -176,7 +176,8 @@ body {
 .mensaje p {
   font-size: 0.8rem;
   line-height: 24px;
-  color: #868e96;
+  color: #000;
+  
 }
 
 .footer {
